@@ -1,20 +1,33 @@
-from selenium.webdriver.common.by import By
+import pytest
+from pages.checkboxes_page import CheckboxPage
 
 
 def test_checkboxes(driver):
-    driver.get("https://the-internet.herokuapp.com/checkboxes")
+    checkbox_page = CheckboxPage(driver)
+    checkbox_page.open()
 
-    checkboxes = driver.find_elements(By.XPATH, "//input[@type='checkbox']")
-
-    checkbox1 = checkboxes[0]
-    checkbox2 = checkboxes[1]
-
-    if not checkbox1.is_selected():
-        checkbox1.click()
-
-    if not checkbox2.is_selected():
-        checkbox2.click()
-
-    assert checkbox1.is_selected(), "Checkbox 1 is not selected"
-    assert checkbox2.is_selected(), "Checkbox 2 is not selected"
+    print(len(checkbox_page.get_checkboxes()))
     
+    # Open the page and select the checkboxes
+    checkbox_page.select_checkbox(0)
+    checkbox_page.select_checkbox(1)
+    
+    # Verify that the checkboxes are selected
+    assert checkbox_page.is_checkbox_selected(0), "Checkbox 1 is not selected"
+    assert checkbox_page.is_checkbox_selected(1), "Checkbox 2 is not selected"
+
+def test_select_checkbox_invalid_index(driver):
+    checkbox_page = CheckboxPage(driver)
+    checkbox_page.open()
+
+    # Add negative test case for selecting a checkbox with an invalid index
+    with pytest.raises(IndexError, match="Checkbox index out of bounds"):
+        checkbox_page.select_checkbox(5)
+
+def test_is_checkbox_selected_invalid_index(driver):
+    checkbox_page = CheckboxPage(driver)
+    checkbox_page.open()
+
+    # Add negative test case for checking if a checkbox is selected with an invalid index
+    with pytest.raises(IndexError, match="Checkbox index out of bounds"):
+        checkbox_page.is_checkbox_selected(5)
