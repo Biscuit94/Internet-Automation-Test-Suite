@@ -2,35 +2,33 @@
 
 ## Overview
 
-This project is a Selenium and Pytest automation testing framework built with Python. It contains automated UI tests for practice websites to strengthen my QA Automation skills and demonstrate practical experience with web automation, test organization, Page Object Model design, and functional testing.
+This project is a Python-based UI automation testing framework built with Selenium WebDriver and Pytest. It contains automated tests for practice websites to develop and demonstrate skills in web automation, test organization, Page Object Model (POM) design, and functional and negative testing.
 
 ## Technologies Used
 
-* Python
-* Selenium WebDriver
-* Pytest
-* webdriver-manager
-* Git/GitHub
-* Visual Studio Code
+- Python
+- Selenium WebDriver
+- Pytest
+- webdriver-manager
+- Git and GitHub
+- Visual Studio Code
 
 ## Framework Design
 
-This project uses the **Page Object Model (POM)** to separate page-specific elements and actions from test logic.
+This project uses the **Page Object Model (POM)** to separate page-specific elements and interactions from test logic.
 
-Page objects contain:
+**Page objects contain:**
+- Page URLs
+- Element locators
+- Methods for interacting with page elements
 
-* Page URLs
-* Element locators
-* Methods for interacting with page elements
+**Test files contain:**
+- Test scenarios
+- Test data
+- Assertions
+- Functional and negative test cases
 
-Test files contain:
-
-* Test scenarios
-* Test data
-* Assertions
-* Functional and negative testing
-
-This structure improves test organization, readability, and maintainability as the automation suite grows.
+This structure improves test organization, readability, and maintainability by keeping page interactions separate from test logic.
 
 ## Project Structure
 
@@ -60,75 +58,86 @@ Internet-Automation-Test-Suite/
 
 ## Current Test Coverage
 
-The test suite currently includes automation for:
+The test suite currently includes automation for the following scenarios:
 
-* **Checkboxes**
+- **Checkboxes**
+  - Selecting checkboxes and verifying their states.
 
-  * Selecting and verifying checkbox states
+- **Dropdowns**
+  - Selecting dropdown options.
+  - Testing negative scenarios.
 
-* **Dropdown**
+- **Dynamic Loading**
+  - Interacting with dynamically loaded page content.
 
-  * Selecting dropdown options
-  * Negative testing
+- **JavaScript Alerts**
+  - Handling browser alerts and verifying expected behavior.
 
-* **Dynamic Loading**
+- **Frames**
+  - Switching between frames.
+  - Interacting with nested frames.
 
-  * Automating dynamically loaded content
+- **Form Authentication**
+  - Testing successful login with valid credentials.
+  - Testing unsuccessful login with invalid credentials.
+  - Verifying login success and error messages.
 
-* **Alerts**
+- **Login**
+  - Automating the login process using the Page Object Model.
+  - Entering valid credentials and submitting the login form.
+  - Verifying successful login by checking the redirect to the secure page.
 
-  * Working with browser alerts
+## Getting Started
 
-* **Frames**
+### Prerequisites
 
-  * Switching between frames
-  * Nested frame automation
+- Python
+- A supported web browser, such as Google Chrome
+- Git
 
-* **Form Authentication**
+### Installation
 
-  * Successful login with valid credentials
-  * Unsuccessful login with invalid credentials
-  * Verification of login success and error messages
-
-* **Login**
-
-  * Login page object and test setup
-
-## How to Run
-
-1. Clone the repository.
-
-2. Install dependencies:
+Clone the repository:
 
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/Biscuit94/Internet-Automation-Test-Suite.git
+cd Internet-Automation-Test-Suite
 ```
 
-3. Run the full test suite:
+Install the required dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### Running the Tests
+
+Run the full test suite:
 
 ```bash
 python -m pytest -v
 ```
 
-4. Run an individual test:
+Run an individual test module:
 
 ```bash
-python -m pytest tests/test_checkboxes.py::test_checkboxes -s
+python -m pytest tests/test_checkboxes.py -v
+```
+
+Run the successful login test:
+
+```bash
+python -m pytest tests/test_login.py -v
 ```
 
 ## Future Improvements
 
-* Expand test coverage across additional pages and scenarios
-* Add file upload automation
-* Add hover interactions
-* Expand negative testing scenarios
-* Implement explicit waits where appropriate
-* Strengthen test assertions
-* Improve test data management
-* Continue expanding Page Object Model coverage
-* Explore additional Pytest fixtures and parameterization
-* Integrate automated test execution into a CI/CD workflow
+- Expand test coverage with additional scenarios and negative cases.
+- Add file upload and hover interaction tests.
+- Improve test data management and explore Pytest parameterization.
+- Expand Page Object Model coverage where appropriate.
+- Integrate automated test execution through a CI/CD workflow.
 
-## Goals
+## Project Goals
 
-This project is part of my ongoing development toward a career in QA Automation. The goal is to build practical experience with Python, Selenium WebDriver, Pytest, test automation frameworks, and software testing best practices.
+This project supports my ongoing development toward a career in QA Automation. It demonstrates practical experience with Python, Selenium WebDriver, Pytest, UI test design, and maintainable automation practices.
