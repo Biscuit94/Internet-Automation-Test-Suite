@@ -31,3 +31,8 @@ class LoginPage:
 
     def open(self):
         self.driver.get(self.URL)
+
+    FLASH_MESSAGE = (By.ID, "flash")
+    def get_error_message(self):
+        error_message_element = self.driver.find_element(*self.FLASH_MESSAGE)
+        return error_message_element.text.strip()
