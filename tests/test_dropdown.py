@@ -2,6 +2,7 @@ from pages.dropdown_page import DropdownPage
 import pytest
 from selenium.common.exceptions import NoSuchElementException
 
+# Test cases for the DropdownPage class
 def test_dropdown(driver):
     dropdown_page = DropdownPage(driver)
     dropdown_page.open()
@@ -10,6 +11,7 @@ def test_dropdown(driver):
     selected_option = dropdown_page.get_selected_option()
     assert selected_option == "Option 1"
 
+# Test case for selecting an invalid option
 def test_select_invalid_option(driver):
     dropdown_page = DropdownPage(driver)
     dropdown_page.open()
