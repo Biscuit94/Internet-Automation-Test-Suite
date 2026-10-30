@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class LoginPage:
@@ -21,6 +23,8 @@ class LoginPage:
     def click_login(self):
         login_button = self.driver.find_element(*self.LOGIN_BUTTON)
         login_button.click()
+        # Wait for the form submit to finish loading the next page
+        WebDriverWait(self.driver, 10).until(EC.staleness_of(login_button))
 
     def is_logged_in(self):
         # Successful login redirects to a secure page.
